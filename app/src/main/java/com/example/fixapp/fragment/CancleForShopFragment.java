@@ -3,13 +3,6 @@ package com.example.fixapp.fragment;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fixapp.R;
 import com.example.fixapp.activity.InforOrderActivity;
@@ -38,7 +36,7 @@ import java.util.ArrayList;
 public class CancleForShopFragment extends Fragment implements OrderAdapter.Callback{
     private RecyclerView recyclerView;
     private OrderAdapter oderAdapter;
-    private ArrayList<Order> list = new ArrayList<>();
+    private final ArrayList<Order> list = new ArrayList<>();
     private FirebaseUser firebaseUser;
     private TextView noResultsTextView;
 
@@ -91,6 +89,8 @@ public class CancleForShopFragment extends Fragment implements OrderAdapter.Call
                         list.add(order);
                     }
                 }
+
+                
                 if (list.isEmpty()){
                     recyclerView.setVisibility(View.GONE);
                     noResultsTextView.setVisibility(View.VISIBLE);

@@ -74,19 +74,13 @@ public class SearchProductFragment extends Fragment {
             totalCart = view.findViewById(R.id.totalCart);
             checkAndHideImageViews();
 
-            imgCart.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), CartActivity.class);
-                    startActivity(intent);
-                }
+            imgCart.setOnClickListener(view -> {
+                Intent intent = new Intent(getContext(), CartActivity.class);
+                startActivity(intent);
             });
-            imgCart1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), CartActivity.class);
-                    startActivity(intent);
-                }
+            imgCart1.setOnClickListener(view -> {
+                Intent intent = new Intent(getContext(), CartActivity.class);
+                startActivity(intent);
             });
         }
         TotalItemCart();
