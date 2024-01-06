@@ -147,12 +147,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         cvOder.setOnClickListener(this);
         cvOut.setOnClickListener(this);
         cvPromotion.setOnClickListener(this);
-        cvXacNhanCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), XacNhanCardActivity.class);
-                startActivity(intent);
-            }
+        cvXacNhanCard.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), XacNhanCardActivity.class);
+            startActivity(intent);
         });
         cvChangePass.setOnClickListener(this);
         cvQLProduct.setOnClickListener(this);
@@ -160,12 +157,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         cvTK.setOnClickListener(this);
         cvQLUser.setOnClickListener(this);
         cvPayment.setOnClickListener(this);
-        cvAdddiachi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LocationActivity.class);
-                startActivity(intent);
-            }
+        cvAdddiachi.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getActivity(), LocationActivity.class);
+            startActivity(intent);
         });
         textFixInfor.setOnClickListener(this);
     }
@@ -210,7 +204,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void showDialogFigProfile() {
-        Dialog dialog = new Dialog(getActivity());
+        Dialog dialog = new Dialog(requireActivity());
         dialog.setContentView(R.layout.dialog_fix_profile);
 
         TextInputEditText edUserName = dialog.findViewById(R.id.edUserName);

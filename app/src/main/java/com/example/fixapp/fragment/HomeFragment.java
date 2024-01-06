@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
     private DatabaseReference mReference;
     List<Product> productList;
     List<Product> productList2;
+    static List<Product> cachedProductList = new ArrayList<>();
     DatabaseReference databaseReference;
     ProductHomeAdapter productHomeAdapter;
     ProductHomeAdapter2 productHomeAdapter2;
@@ -215,19 +216,22 @@ public class HomeFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                productList.clear();
-                productList2.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Product product = snapshot.getValue(Product.class);
-                    if (product.getQuantity() > 0) {
-                        productList.add(product);
-                        productList2.add(product);
+                if (dataSnapshot.hasChildren()) {
+                    productList.clear();
+                    productList2.clear();
+                    cachedProductList.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Product product = snapshot.getValue(Product.class);
+                        if (product != null && product.getQuantity() > 0) {
+                            productList.add(product);
+                            productList2.add(product);
+                            cachedProductList.add(product);
+                        }
                     }
+                    productHomeAdapter.setData(productList);
+                    productHomeAdapter2.setData(productList2);
                 }
-                productHomeAdapter.setData(productList);
-                productHomeAdapter2.setData(productList2);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

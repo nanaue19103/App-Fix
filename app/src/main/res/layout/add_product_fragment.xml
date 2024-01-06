@@ -117,6 +117,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="180dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
